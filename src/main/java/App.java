@@ -23,10 +23,20 @@ public class App {
         EntityManager entityManager = JpaUtil.getEntityManagerFactory().createEntityManager();
         initializeDao(entityManager);
         entityManager.getTransaction().begin();
-        initializeData();
+//        initializeData();
 
         entityManager.getTransaction().commit();
+        //        searching employee By postalCode :
+        employeeDao.searchEmployeeByPostalCode("546444");
 
+//        searching employee By telNumber :
+        employeeDao.searchEmployeeByTelNumber("02165515656");
+
+        employeeDao.mostSalaryBasesCity();
+
+        employeeDao.getEmployeeWithMostSalaryInEachCity();
+
+        employeeDao.getEmployeeWithMostSalaryInEachCity();
         entityManager.close();
         JpaUtil.shutdown();
     }
@@ -54,7 +64,7 @@ public class App {
 
         phoneNumbers.add(phoneNumber);
         phoneNumbers2.add(phoneNumber2);
-        phoneNumbers2.add(phoneNumber3);
+        phoneNumbers3.add(phoneNumber3);
         phoneNumbers4.add(phoneNumber4);
 
         Address address = createAddress("0214446464","Qom","546465","Street 1",phoneNumbers);
@@ -78,8 +88,8 @@ public class App {
         addresses3.add(address4);
 
         Employee employee = createEmployee(455,"Reza",200.0,addresses);
-        Employee employee2 = createEmployee(434,"Javad",350.0,addresses2);
-        Employee employee3 = createEmployee(456,"Reza",550.0,addresses3);
+        Employee employee2 = createEmployee(434,"Hamid",350.0,addresses2);
+        Employee employee3 = createEmployee(456,"Ali",550.0,addresses3);
 
 
 
@@ -89,7 +99,7 @@ public class App {
         System.out.println("the Employee Has Most Salary : "+employeeDao.theEmployeeHasMostSalary());
 
 //        DELETE
-        employeeDao.delete(employee);
+//        employeeDao.delete(employee);
 
     }
 
